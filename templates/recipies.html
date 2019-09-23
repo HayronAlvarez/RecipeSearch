@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipes</title>
+    <style>
+html{
+  background:  RosyBrown;
+}
+
+.bar{
+  font-size: 15px;
+  font-family: Georgia;
+  border-radius: 25px;
+  display:block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 15px;
+
+}
+div{
+  font-size: 15px;
+  font-family: Georgia;
+  border-radius: 25px;
+  display:block;
+  margin: 0px auto 0px;
+  padding: 0px 50px 0px;
+  width: 1000px;
+  background: rgba(255,245,238,1.0);
+}
+img:hover {
+  opacity: 5;
+}
+table{
+  table-layout: fixed;
+  align-content: center;
+}
+tbody tr:hover {
+  background-color: White;
+}
+h4{
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+<form name = "passdataa" action="." method ="get">
+<div class="bar">
+    <h4><font size="5">{{ userInput}} recipes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
+    <button type="submit" >Search Another Recipe</button>
+    </h4>
+</div>
+<div>
+<table align = "center">
+  <tr>&nbsp </tr>
+  <tr>&nbsp</tr>
+  <tr width ="100%" align="center">
+      <td width ="15%">Recipe Name</td>
+      <td width="25%">Ingredients</td>
+      <td>Cook Time(Minutes)</td>
+      <td>Image</td>
+  </tr>
+{% for i in recepies %}
+
+    <tr>
+
+        <td>
+             {{ i["recipeName"] }}
+        </td>
+        <td>
+            {% for j in i["ingredients"] %}
+            {{ j }},
+            {% endfor %}
+        </td>
+        <td align="center">
+             {{ i["recipeCookTime"] }}
+        </td>
+        <td align = "center">
+            <a href="{{ i["recipeLink" ]}}" target="_blank"> <img src="{{ i["imageUrl"] }}"></a>
+        </td>
+
+
+    </tr>
+    <tr></tr>
+
+{% endfor %}
+</table>
+</div>
+</form>
+</body>
+</html>
